@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Nexus Gaming - Minecraft, Roblox und Geometry Dash">
+
+    <title>Nexus Gaming</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <header class="header">
+
+        <a href="index.html" class="logo">
+            🎮 <span>NEXUS GAMING</span>
+        </a>
+
+        <nav class="nav" id="nav">
+
+            <a href="#home">Home</a>
+
+            <a href="#games">Games</a>
+
+            <a href="#gaming-hub">Gaming Hub</a>
+
+            <a href="#interactive">Tools</a>
+
+            <a href="#stats">Stats</a>
+
+            <a href="#projects">Projekte</a>
+
+            <a href="#about">Über mich</a>
+
+            <a href="#contact">Kontakt</a>
+
+            <div id="mobileMenu" class="mobile-menu">
+
+                <a href="#home">Home</a>
+
+                <a href="#games">Games</a>
+
+                <a href="#gaming-hub">Gaming Hub</a>
+
+                <a href="#interactive">Tools</a>
+
+                <a href="#stats">Stats</a>
+
+                <a href="#projects">Projekte</a>
+
+                <a href="#about">Über mich</a>
+
+                <a href="#contact">Kontakt</a>
+
+            </div>
+
+        </nav>
+        <div class="header-buttons">
+
+            <button id="themeButton" class="icon-button">
+                🌙
+            </button>
+
+            <button id="menuButton" class="menu-button">
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <main>
+
+        <section id="home" class="hero">
+
+            <div class="hero-background"></div>
+
+            <div class="hero-content">
+
+                <p class="hero-small">
+                    🎮 WELCOME TO NEXUS GAMING
+                </p>
+
+                <h1>
+                    LEVEL UP<br>
+                    <span>YOUR GAME</span>
+                </h1>
+
+                <p class="hero-description">
+                    Entdecke Minecraft, Roblox und Geometry Dash
+                    an einem Ort.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#games" class="primary-button">
+                        GAMES ENTDECKEN
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="scroll-down">
+                ↓ Scroll
+            </div>
+
+        </section>
+
+
+        <!-- GAMES -->
+
+        <section id="games" class="section">
+
+            <div class="section-header">
+                <p class="section-small">
+                    GAME COLLECTION
+                </p>
+
+                <h2>Meine Games</h2>
+
+                <p>
+                    Wähle ein Spiel aus und entdecke
+                    die entsprechende Seite.
+                </p>
+
+            </div>
+
+            <div class="game-controls">
+
+                <div class="game-search">
+                    <span>🔎</span>
+
+                    <input type="text" id="gameSearch" placeholder="Game suchen...">
+                </div>
+
+
+                <div class="game-categories">
+
+                    <button class="category-button active" data-category="all">
+                        Alle
+                    </button>
+
+                    <button class="category-button" data-category="sandbox">
+                        Sandbox
+                    </button>
+
+                    <button class="category-button" data-category="platformer">
+                        Platformer
+                    </button>
+
+                </div>
+
+
+                <select id="gameSort">
+
+                    <option value="default">
+                        Standard
+                    </option>
+
+                    <option value="az">
+                        Name A–Z
+                    </option>
+
+                    <option value="za">
+                        Name Z–A
+                    </option>
+
+                    <option value="favorites">
+                        ⭐ Favoriten zuerst
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="cards">
+
+
+                <!-- MINECRAFT -->
+
+                <a href="games/minecraft.html" class="game-card reveal" data-name="Minecraft" data-category="sandbox">
+                    <button class="favorite-button" data-game="Minecraft" title="Zu Favoriten hinzufügen">
+                        ☆
+                    </button>
+
+
+
+                    <div class="card-icon minecraft-icon">
+                        <img src="images/minecraft.jpg" alt="Minecraft" class="game-image">
+                    </div>
+
+                    <div class="card-content">
+
+                        <span class="card-tag">
+                            BUILD • SURVIVE • EXPLORE
+                        </span>
+
+                        <h3>Minecraft</h3>
+
+                        <p>
+                            Entdecke die Welt von Minecraft,
+                            Builds, Survival und mehr.
+                        </p>
+
+                        <span class="card-button">
+                            SEITE ÖFFNEN →
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <!-- ROBLOX -->
+
+                <a href="games/roblox.html" class="game-card reveal" data-name="Roblox" data-category="sandbox"> <button
+                        class="favorite-button" data-game="Roblox" title="Zu Favoriten hinzufügen">
+                        ☆
+                    </button>
+                    <div class="card-icon roblox-icon">
+                        <img src="images/roblox.jpg" alt="Roblox" class="game-image">
+                    </div>
+
+                    <div class="card-content">
+
+                        <span class="card-tag">
+                            CREATE • PLAY • DISCOVER
+                        </span>
+
+                        <h3>Roblox</h3>
+
+                        <p>
+                            Entdecke Roblox-Spiele,
+                            Roblox Studio und mehr.
+                        </p>
+
+                        <span class="card-button">
+                            SEITE ÖFFNEN →
+                        </span>
+
+                    </div>
+
+                </a>
+
+
+                <!-- GEOMETRY DASH -->
+
+                <a href="games/geometry-dash.html" class="game-card reveal" data-name="Geometry Dash"
+                    data-category="platformer"> <button class="favorite-button" data-game="Geometry Dash"
+                        title="Zu Favoriten hinzufügen">
+                        ☆
+                    </button>
+                    <div class="card-icon geometry-icon">
+                        <img src="images/geometry-dash.jpg" alt="Geometry Dash" class="game-image">
+                    </div>
+
+                    <div class="card-content">
+
+                        <span class="card-tag">
+                            JUMP • FLY • COMPLETE
+                        </span>
+
+                        <h3>Geometry Dash</h3>
+
+                        <p>
+                            Levels, Demons, Musik und
+                            Geometry-Dash-Content.
+                        </p>
+
+                        <span class="card-button">
+                            SEITE ÖFFNEN →
+                        </span>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- =========================
+     GAMING HUB
+========================= -->
+
+        <section id="gaming-hub" class="section">
+
+            <section class="xp-section reveal">
+
+                <div class="xp-header">
+
+                    <div>
+                        <span class="section-tag">⚡ GAMING XP</span>
+
+                        <h2>Dein Level</h2>
+
+                        <p>
+                            Spiele Mini-Games und schalte Achievements frei,
+                            um XP zu sammeln.
+                        </p>
+                    </div>
+
+                    <div class="xp-level" id="xpLevel">
+                        Level 1
+                    </div>
+
+                </div>
+
+                <div class="xp-info">
+
+                    <span id="xpAmount">
+                        0 / 100 XP
+                    </span>
+
+                    <span id="xpNext">
+                        Noch 100 XP
+                    </span>
+
+                </div>
+
+                <div class="xp-bar">
+
+                    <div id="xpBarFill" class="xp-bar-fill"></div>
+
+                </div>
+
+            </section>
+
+            <div class="section-header">
+
+                <p class="section-small">
+                    GAMING HUB
+                </p>
+
+                <h2>Mein Gaming Hub</h2>
+
+                <p>
+                    News, Erfolge, Challenges und mehr.
+                </p>
+
+            </div>
+
+
+            <!-- GAME OF THE WEEK -->
+
+            <div class="gaming-feature">
+
+                <span class="section-small">
+                    🔥 GAME OF THE WEEK
+                </span>
+
+                <h3>Geometry Dash</h3>
+
+                <p>
+                    Diese Woche dreht sich alles um
+                    Geometry Dash.
+                </p>
+
+                <a href="games/geometry-dash.html" class="primary-button">
+                    GAME ÖFFNEN →
+                </a>
+
+            </div>
+
+
+            <!-- CURRENTLY PLAYING -->
+
+            <div class="gaming-feature">
+
+                <span class="section-small">
+                    🎮 CURRENTLY PLAYING
+                </span>
+
+                <h3 id="currentlyPlaying">
+                    Geometry Dash
+                </h3>
+
+                <p>
+                    Aktuelles Spiel
+                </p>
+
+                <button id="changePlaying" class="primary-button" type="button">
+                    ÄNDERN
+                </button>
+
+            </div>
+
+
+            <!-- GAMING NEWS -->
+
+            <div class="gaming-feature">
+
+                <span class="section-small">
+                    📰 GAMING NEWS
+                </span>
+
+                <h3>Neuigkeiten</h3>
+
+                <div class="news-list">
+
+                    <article class="news-item">
+
+                        <span>🎮</span>
+
+                        <div>
+
+                            <h4>Nexus Gaming ist online!</h4>
+
+                            <p>
+                                Deine neue Gaming-Website
+                                ist jetzt online.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="news-item">
+
+                        <span>🆕</span>
+
+                        <div>
+
+                            <h4>Neue Games hinzugefügt</h4>
+
+                            <p>
+                                Minecraft, Roblox und
+                                Geometry Dash sind verfügbar.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="news-item">
+
+                        <span>🔥</span>
+
+                        <div>
+
+                            <h4>Neue Features</h4>
+
+                            <p>
+                                Weitere Gaming-Funktionen
+                                kommen bald.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACHIEVEMENTS -->
+            <section class="achievements-section reveal">
+
+                <div class="section-header">
+                    <span class="section-tag">🏆 ACHIEVEMENTS</span>
+                    <h2>Deine Erfolge</h2>
+                    <p>Schalte besondere Erfolge beim Spielen frei.</p>
+                </div>
+                <div class="achievement-progress">
+
+                    <div class="achievement-progress-top">
+                        <span>🏆 Fortschritt</span>
+                        <span id="achievementProgressText">0 / 6</span>
+                    </div>
+
+                    <div class="achievement-progress-bar">
+                        <div id="achievementProgressFill" class="achievement-progress-fill"></div>
+                    </div>
+
+                </div>
+                <div class="achievements-grid" id="achievementsGrid"></div>
+
+            </section>
+            <div class="gaming-feature">
+
+                <span class="section-small">
+                    🏆 ACHIEVEMENTS
+                </span>
+
+                <h3>Deine Erfolge</h3>
+
+                <div class="achievement-grid">
+
+                    <div class="achievement" data-achievement="first-click">
+                        🎯
+                        <strong>First Click</strong>
+                        <span>Erster Klick im Mini-Game</span>
+                    </div>
+
+
+                    <div class="achievement" data-achievement="10-clicks">
+                        🔥
+                        <strong>Clicker</strong>
+                        <span>10 Treffer schaffen</span>
+                    </div>
+
+
+                    <div class="achievement" data-achievement="favorite">
+                        ⭐
+                        <strong>Favorite</strong>
+                        <span>Ein Game favorisieren</span>
+                    </div>
+
+
+                    <div class="achievement" data-achievement="explorer">
+                        🗺️
+                        <strong>Explorer</strong>
+                        <span>Alle drei Games besuchen</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CHALLENGES -->
+
+            <div class="gaming-feature">
+
+                <span class="section-small">
+                    🎯 GAMING CHALLENGES
+                </span>
+
+                <h3>Challenges</h3>
+
+                <div class="challenge-list">
+
+                    <div class="challenge">
+
+                        <strong>
+                            ⛏️ Minecraft Challenge
+                        </strong>
+
+                        <p>
+                            Baue heute etwas Neues.
+                        </p>
+
+                    </div>
+
+
+                    <div class="challenge">
+
+                        <strong>
+                            🟥 Roblox Challenge
+                        </strong>
+
+                        <p>
+                            Spiele ein neues Roblox-Game.
+                        </p>
+
+                    </div>
+
+
+                    <div class="challenge">
+
+                        <strong>
+                            🔺 Geometry Dash Challenge
+                        </strong>
+
+                        <p>
+                            Schaffe ein Level ohne zu sterben.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- WISHLIST -->
+
+            <div class="gaming-feature">
+
+                <span class="section-small">
+                    📋 GAME WISHLIST
+                </span>
+
+                <h3>Meine Wunschliste</h3>
+
+                <div class="wishlist-input">
+
+                    <input type="text" id="wishlistInput" placeholder="Game hinzufügen...">
+
+                    <button id="wishlistAdd" class="primary-button" type="button">
+                        HINZUFÜGEN
+                    </button>
+
+                </div>
+
+
+                <ul id="wishlist"></ul>
+
+            </div>
+
+
+            <!-- GAME RATINGS -->
+
+            <div class="gaming-feature">
+
+                <span class="section-small">
+                    ⭐ GAME-BEWERTUNGEN
+                </span>
+
+                <h3>Wie findest du die Games?</h3>
+
+
+                <div class="rating">
+
+                    <strong>Minecraft</strong>
+
+                    <div class="stars" data-game="Minecraft">
+                        <button type="button">★</button>
+                        <button type="button">★</button>
+                        <button type="button">★</button>
+                        <button type="button">★</button>
+                        <button type="button">★</button>
+                    </div>
+
+                </div>
+
+
+                <div class="rating">
+
+                    <strong>Roblox</strong>
+
+                    <div class="stars" data-game="Roblox">
+                        <button type="button">★</button>
+                        <button type="button">★</button>
+                        <button type="button">★</button>
+                        <button type="button">★</button>
+                        <button type="button">★</button>
+                    </div>
+
+                </div>
+
+
+                <div class="rating">
+
+                    <strong>Geometry Dash</strong>
+
+                    <div class="stars" data-game="Geometry Dash">
+                        <button type="button">★</button>
+                        <button type="button">★</button>
+                        <button type="button">★</button>
+                        <button type="button">★</button>
+                        <button type="button">★</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NEW GAMES -->
+
+            <div class="gaming-feature">
+
+                <span class="section-small">
+                    🆕 NEU HINZUGEFÜGT
+                </span>
+
+                <h3>Zuletzt hinzugefügt</h3>
+
+                <div class="new-games">
+
+                    <div>🔺 Geometry Dash</div>
+
+                    <div>🟥 Roblox</div>
+
+                    <div>⛏️ Minecraft</div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =========================
+     MINI GAME CENTER
+========================= -->
+
+        <section id="interactive" class="section">
+
+            <div class="section-header">
+
+                <p class="section-small">
+                    🎮 MINI GAME CENTER
+                </p>
+
+                <h2>Mini Games</h2>
+
+                <p>
+                    Spiele kleine Games und versuche,
+                    deine Highscores zu schlagen!
+                </p>
+
+            </div>
+
+
+            <!-- GAME AUSWAHL -->
+
+            <div class="mini-game-selector">
+
+                <button class="minigame-open primary-button" data-game="click" type="button">
+                    🎯 Click Challenge
+                </button>
+
+                <button class="minigame-open primary-button" data-game="reaction" type="button">
+                    ⚡ Reaction Test
+                </button>
+
+                <button class="minigame-open primary-button" data-game="lucky" type="button">
+                    🎲 Lucky Number
+                </button>
+
+                <button class="minigame-open primary-button" data-game="ten" type="button">
+                    ⏱️ 10 Seconds
+                </button>
+
+                <button class="minigame-open primary-button" data-game="memory" type="button">
+                    🧠 Memory
+                </button>
+
+                <button class="minigame-open primary-button" data-game="target" type="button">
+                    🎯 Target Rush
+                </button>
+
+            </div>
+
+
+            <!-- AKTIVES GAME -->
+
+            <div class="gaming-feature mini-game-container">
+
+                <span class="section-small">
+                    🎮 AKTIVES MINI-GAME
+                </span>
+
+                <h3 id="activeGameTitle">
+                    Wähle ein Mini-Game
+                </h3>
+
+                <div id="miniGameArea">
+
+                    <p>
+                        Wähle oben ein Mini-Game aus,
+                        um zu starten.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =========================
+     MINI GAME LEADERBOARD
+========================= -->
+
+        <section id="leaderboard" class="section">
+
+            <div class="section-header">
+
+                <p class="section-small">
+                    🏆 MINI GAME LEADERBOARD
+                </p>
+
+                <h2>Highscores</h2>
+
+                <p>
+                    Deine besten Ergebnisse in den Mini-Games.
+                </p>
+
+            </div>
+
+            <div class="leaderboard-container">
+
+                <div class="leaderboard-card">
+
+                    <h3>🎯 Click Challenge</h3>
+
+                    <div class="leaderboard-score">
+                        <span>Highscore</span>
+                        <strong id="highscore-click">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="leaderboard-card">
+
+                    <h3>⚡ Reaction Test</h3>
+
+                    <div class="leaderboard-score">
+                        <span>Beste Zeit</span>
+                        <strong id="highscore-reaction">–</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="leaderboard-card">
+
+                    <h3>🎲 Lucky Number</h3>
+
+                    <div class="leaderboard-score">
+                        <span>Wenigste Versuche</span>
+                        <strong id="highscore-lucky">–</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="leaderboard-card">
+
+                    <h3>⏱️ 10 Seconds</h3>
+
+                    <div class="leaderboard-score">
+                        <span>Beste Abweichung</span>
+                        <strong id="highscore-ten">–</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="leaderboard-card">
+
+                    <h3>🧠 Memory</h3>
+
+                    <div class="leaderboard-score">
+                        <span>Bestes Ergebnis</span>
+                        <strong id="highscore-memory">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="leaderboard-card">
+
+                    <h3>🎯 Target Rush</h3>
+
+                    <div class="leaderboard-score">
+                        <span>Highscore</span>
+                        <strong id="highscore-target">0</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="leaderboard-reset">
+
+                <button id="resetHighscores" class="primary-button" type="button">
+                    🗑️ HIGHSCORES ZURÜCKSETZEN
+                </button>
+
+            </div>
+
+        </section>
+        <!-- STATS -->
+
+        <section id="stats" class="stats-section">
+
+            <div class="section-header">
+
+                <p class="section-small">
+                    MY NUMBERS
+                </p>
+
+                <h2>Gaming Stats</h2>
+
+            </div>
+
+
+            <div class="stats-container">
+
+                <div class="stat">
+
+                    <span class="stat-number" data-target="100">
+                        0
+                    </span>
+
+                    <span class="stat-label">
+                        Games gespielt
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <span class="stat-number" data-target="500">
+                        0
+                    </span>
+
+                    <span class="stat-label">
+                        Stunden Gaming
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <span class="stat-number" data-target="50">
+                        0
+                    </span>
+
+                    <span class="stat-label">
+                        Projekte
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <span class="stat-number" data-target="1000">
+                        0
+                    </span>
+
+                    <span class="stat-label">
+                        Ideen
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROJEKTE -->
+
+        <section id="projects" class="section">
+
+            <div class="section-header">
+
+                <p class="section-small">
+                    WHAT I CREATE
+                </p>
+
+                <h2>Meine Projekte</h2>
+
+                <p>
+                    Dinge, die mit HTML, CSS, JavaScript
+                    und Roblox entstehen.
+                </p>
+
+            </div>
+
+
+            <div class="project-grid">
+
+                <article class="project">
+
+                    <span class="project-number">01</span>
+
+                    <h3>Websites</h3>
+
+                    <p>
+                        Moderne Websites mit HTML,
+                        CSS und JavaScript.
+                    </p>
+
+                </article>
+
+
+                <article class="project">
+
+                    <span class="project-number">02</span>
+
+                    <h3>Roblox Games</h3>
+
+                    <p>
+                        Eigene Spiele mit Roblox Studio
+                        und Lua.
+                    </p>
+
+                </article>
+
+
+                <article class="project">
+
+                    <span class="project-number">03</span>
+
+                    <h3>JavaScript Games</h3>
+
+                    <p>
+                        Browsergames direkt mit
+                        JavaScript programmieren.
+                    </p>
+
+                </article>
+
+
+                <article class="project">
+
+                    <span class="project-number">04</span>
+
+                    <h3>Experimente</h3>
+
+                    <p>
+                        Neue Ideen ausprobieren und
+                        eigene Projekte bauen.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ABOUT -->
+
+        <section id="about" class="about-section">
+
+            <div class="about-content">
+
+                <p class="section-small">
+                    ABOUT
+                </p>
+
+                <h2>
+                    Gaming × Coding
+                </h2>
+
+                <p>
+                    Eine Gaming-Website für Minecraft,
+                    Roblox und Geometry Dash.
+                </p>
+
+                <p>
+                    Gebaut mit HTML, CSS und JavaScript.
+                </p>
+
+                <div class="skills">
+
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                    <span>Roblox</span>
+                    <span>VS Code</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACT -->
+
+        <section id="contact" class="section">
+
+            <div class="section-header">
+
+                <p class="section-small">
+                    CONTACT
+                </p>
+
+                <h2>Kontakt</h2>
+
+                <p>
+                    Schreib eine Nachricht.
+                </p>
+
+            </div>
+
+
+            <form id="contactForm" class="contact-form">
+
+                <input type="text" id="name" placeholder="Dein Name" required>
+
+                <input type="email" id="email" placeholder="Deine E-Mail" required>
+
+                <textarea id="message" placeholder="Deine Nachricht..." required></textarea>
+
+                <button type="submit" class="primary-button">
+                    NACHRICHT SENDEN
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- FOOTER -->
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-logo">
+            🎮 NEXUS GAMING
+        </div>
+
+        <p>
+            Dein Gaming Hub für Minecraft, Roblox
+            und Geometry Dash.
+        </p>
+
+        <p class="copyright">
+            © 2026 Nexus Gaming
+        </p>
+
+        <p class="disclaimer">
+            Dies ist eine inoffizielle Fan-/Lernwebsite und steht nicht in Verbindung mit Mojang oder Microsoft.
+        </p>
+
+    </footer>
+
+
+    <!-- TOAST -->
+
+    <div id="toast" class="toast">
+        Nachricht
+    </div>
+
+
+    <!-- TOP BUTTON -->
+
+    <button id="topButton" class="top-button">
+        ↑
+    </button>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
