@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://batuhanserce945-collab.github.io/nexus-gaming/sitemap.xml
