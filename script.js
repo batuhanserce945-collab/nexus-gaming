@@ -18,7 +18,6 @@ if (savedTheme === "light") {
 
 }
 
-
 if (themeButton) {
 
     themeButton.addEventListener("click", function () {
@@ -57,7 +56,6 @@ const menuButton =
 const mobileMenu =
     document.getElementById("mobileMenu");
 
-
 if (menuButton && mobileMenu) {
 
     menuButton.addEventListener("click", function () {
@@ -71,10 +69,8 @@ if (menuButton && mobileMenu) {
 
     });
 
-
     const mobileLinks =
         mobileMenu.querySelectorAll("a");
-
 
     mobileLinks.forEach(function (link) {
 
@@ -104,6 +100,24 @@ const gameSort =
 const categoryButtons =
     document.querySelectorAll(".category-button");
 
+const categoryToggle =
+    document.getElementById("categoryToggle");
+
+const categoryMenu =
+    document.getElementById("categoryMenu");
+
+
+if (categoryToggle && categoryMenu) {
+
+    categoryToggle.addEventListener("click", function () {
+
+        categoryMenu.classList.toggle("active");
+
+    });
+
+}
+
+
 const gameGrid =
     document.querySelector(".cards");
 
@@ -118,11 +132,7 @@ let selectedCategory = "all";
 let searchText = "";
 
 
-/* Wenn keine Game-Karten vorhanden sind,
-   wird das Game-System nicht ausgeführt. */
-
 if (gameCards.length > 0 && gameGrid) {
-
 
     /* =========================
        FAVORITES
@@ -152,7 +162,6 @@ if (gameCards.length > 0 && gameGrid) {
 
                 const game =
                     button.dataset.game;
-
 
                 if (favorites.includes(game)) {
 
@@ -202,10 +211,8 @@ if (gameCards.length > 0 && gameGrid) {
 
                     event.stopPropagation();
 
-
                     const game =
                         button.dataset.game;
-
 
                     if (!game) return;
 
@@ -221,7 +228,6 @@ if (gameCards.length > 0 && gameGrid) {
                                 }
                             );
 
-
                         showToast(
                             "☆ " +
                             game +
@@ -231,7 +237,6 @@ if (gameCards.length > 0 && gameGrid) {
                     } else {
 
                         favorites.push(game);
-
 
                         showToast(
                             "⭐ " +
@@ -272,7 +277,6 @@ if (gameCards.length > 0 && gameGrid) {
                     gameSearch.value
                         .toLowerCase()
                         .trim();
-
 
                 filterGames();
 
@@ -383,10 +387,6 @@ if (gameCards.length > 0 && gameGrid) {
             );
 
 
-        /* =========================
-           SORTIERUNG
-        ========================= */
-
         const sort =
             gameSort
                 ? gameSort.value
@@ -457,10 +457,6 @@ if (gameCards.length > 0 && gameGrid) {
         }
 
 
-        /* =========================
-           KARTEN ANZEIGEN
-        ========================= */
-
         gameCards.forEach(
             function (card) {
 
@@ -482,8 +478,6 @@ if (gameCards.length > 0 && gameGrid) {
 
     }
 
-
-    /* Initial */
 
     filterGames();
 
@@ -780,7 +774,6 @@ if (target && scoreElement) {
 
             score++;
 
-
             scoreElement.textContent =
                 score;
 
@@ -808,6 +801,7 @@ if (target && scoreElement) {
     );
 
 }
+
 
 /* =========================
    GAMING HUB
@@ -874,6 +868,7 @@ if (changePlaying) {
 
             updateCurrentlyPlaying();
 
+
             showToast(
                 "🎮 Aktuelles Game: " +
                 playingGames[playingIndex]
@@ -902,15 +897,27 @@ const wishlist =
     document.getElementById("wishlist");
 
 
-let wishlistGames =
-    JSON.parse(
-        localStorage.getItem("wishlistGames")
-    ) || [];
+let wishlistGames = [];
+
+
+try {
+
+    wishlistGames =
+        JSON.parse(
+            localStorage.getItem("wishlistGames")
+        ) || [];
+
+} catch (error) {
+
+    wishlistGames = [];
+
+}
 
 
 function displayWishlist() {
 
     if (!wishlist) return;
+
 
     wishlist.innerHTML = "";
 
@@ -1105,6 +1112,7 @@ ratingElements.forEach(
     }
 );
 
+
 /* =========================
    MINI GAME CENTER
 ========================= */
@@ -1120,7 +1128,6 @@ const minigameButtons =
 
 
 if (miniGameArea && minigameButtons.length > 0) {
-
 
     let clickScore = 0;
 
@@ -1165,58 +1172,68 @@ if (miniGameArea && minigameButtons.length > 0) {
     /* =========================
        CLICK CHALLENGE
     ========================= */
-
     function startClickGame() {
+
+        startMiniGameXPSession("click");
+
+        registerGamePlayed();
 
         unlockAchievement("firstGame");
 
+        // ...
         setGameTitle("🎯 Click Challenge");
 
         clickScore = 0;
 
-        if (clickScore % 10 === 0) {
-            addXP(5);
-        }
 
         showGame(`
 
+            <p>
+                Klicke so oft du kannst!
+            </p>
 
-        <p>
-            Klicke so oft du kannst!
-        </p>
+            <div
+                class="mini-game-score"
+                id="miniClickScore"
+            >
+                0
+            </div>
 
-        <div class="mini-game-score"
-             id="miniClickScore">
-            0
-        </div>
+            <button
+                class="mini-game-button"
+                id="miniClickButton"
+            >
+                KLICK!
+            </button>
 
-        <button
-            class="mini-game-button"
-            id="miniClickButton"
-        >
-            KLICK!
-        </button>
-    `);
+        `);
 
 
         const button =
-            document.getElementById("miniClickButton");
+            document.getElementById(
+                "miniClickButton"
+            );
 
         const score =
-            document.getElementById("miniClickScore");
-
+            document.getElementById(
+                "miniClickScore"
+            );
 
         button.addEventListener(
             "click",
             function () {
 
+                if (clickScore >= 25) {
+                    return;
+                }
+
+
                 clickScore++;
+
 
                 score.textContent =
                     clickScore;
 
-
-                /* HIGHscore speichern */
 
                 saveHighscore(
                     "click",
@@ -1224,8 +1241,26 @@ if (miniGameArea && minigameButtons.length > 0) {
                 );
 
 
+                if (clickScore >= 25) {
+
+                    rewardMiniGameXP("click");
+
+                    button.disabled =
+                        true;
+
+                    button.textContent =
+                        "GESCHAFFT!";
+
+                    showToast(
+                        "🎯 Click Challenge abgeschlossen! +5 XP"
+                    );
+
+                }
+
+
                 button.style.transform =
                     "scale(0.9)";
+
 
                 setTimeout(
                     function () {
@@ -1242,12 +1277,18 @@ if (miniGameArea && minigameButtons.length > 0) {
 
     }
 
+
     /* =========================
        REACTION TEST
     ========================= */
 
     function startReactionGame() {
 
+        startMiniGameXPSession("reaction");
+
+        registerGamePlayed();
+
+        // ...
         setGameTitle("⚡ Reaction Test");
 
 
@@ -1270,17 +1311,24 @@ if (miniGameArea && minigameButtons.length > 0) {
             >
                 -
             </div>
+
         `);
 
 
         const box =
-            document.getElementById("reactionBox");
+            document.getElementById(
+                "reactionBox"
+            );
 
         const text =
-            document.getElementById("reactionText");
+            document.getElementById(
+                "reactionText"
+            );
 
         const score =
-            document.getElementById("reactionScore");
+            document.getElementById(
+                "reactionScore"
+            );
 
 
         let waiting = false;
@@ -1290,7 +1338,6 @@ if (miniGameArea && minigameButtons.length > 0) {
             "click",
             function () {
 
-                /* START */
                 if (!waiting) {
 
                     waiting = true;
@@ -1304,9 +1351,11 @@ if (miniGameArea && minigameButtons.length > 0) {
                     text.textContent =
                         "Sobald es grün wird, klicken!";
 
+
                     const delay =
                         1500 +
                         Math.random() * 3000;
+
 
                     reactionTimeout =
                         setTimeout(
@@ -1325,11 +1374,12 @@ if (miniGameArea && minigameButtons.length > 0) {
                             delay
                         );
 
+
                     return;
+
                 }
 
 
-                /* ZU FRÜH GEKLICKT */
                 if (
                     !box.classList.contains("ready")
                 ) {
@@ -1353,18 +1403,29 @@ if (miniGameArea && minigameButtons.length > 0) {
                     waiting = false;
 
                     return;
+
                 }
 
 
-                /* RICHTIG GEKLICKT */
                 const reaction =
                     Math.round(
                         performance.now() -
                         reactionStart
                     );
+
+
                 if (reaction < 200) {
-                    unlockAchievement("fastReaction");
+
+                    unlockAchievement(
+                        "fastReaction"
+                    );
+
                 }
+                rewardMiniGameXP("reaction");
+
+                score.textContent =
+                    reaction + " ms";
+
                 score.textContent =
                     reaction + " ms";
 
@@ -1380,7 +1441,6 @@ if (miniGameArea && minigameButtons.length > 0) {
                 waiting = false;
 
 
-                /* HIGHSCORE SPEICHERN */
                 saveHighscore(
                     "reaction",
                     reaction
@@ -1388,6 +1448,7 @@ if (miniGameArea && minigameButtons.length > 0) {
 
             }
         );
+
     }
 
 
@@ -1397,6 +1458,11 @@ if (miniGameArea && minigameButtons.length > 0) {
 
     function startLuckyGame() {
 
+        startMiniGameXPSession("lucky");
+
+        registerGamePlayed();
+
+        // ...
         setGameTitle("🎲 Lucky Number");
 
 
@@ -1410,7 +1476,6 @@ if (miniGameArea && minigameButtons.length > 0) {
 
 
         showGame(`
-            
 
             <p>
                 Errate eine Zahl zwischen 1 und 20.
@@ -1438,17 +1503,24 @@ if (miniGameArea && minigameButtons.length > 0) {
             >
                 ?
             </div>
+
         `);
 
 
         const input =
-            document.getElementById("luckyInput");
+            document.getElementById(
+                "luckyInput"
+            );
 
         const button =
-            document.getElementById("luckyButton");
+            document.getElementById(
+                "luckyButton"
+            );
 
         const result =
-            document.getElementById("luckyResult");
+            document.getElementById(
+                "luckyResult"
+            );
 
 
         button.addEventListener(
@@ -1476,11 +1548,22 @@ if (miniGameArea && minigameButtons.length > 0) {
 
 
                 if (guess === secret) {
-                    unlockAchievement("luckyWinner");
+                    rewardMiniGameXP("lucky");
+                    unlockAchievement(
+                        "luckyWinner"
+                    );
+
+
+
                     result.textContent =
                         "🎉 RICHTIG!";
 
-                    saveHighscore("lucky", attempts);
+
+                    saveHighscore(
+                        "lucky",
+                        attempts
+                    );
+
 
                     showToast(
                         "🎲 Geschafft in " +
@@ -1509,14 +1592,18 @@ if (miniGameArea && minigameButtons.length > 0) {
     /* =========================
        10 SECONDS
     ========================= */
-
     function startTenSecondGame() {
 
+        startMiniGameXPSession("ten");
+
+        registerGamePlayed();
+
+        // ...
         setGameTitle("⏱️ 10 Seconds");
 
 
         showGame(`
-      
+
             <p>
                 Starte den Timer und stoppe ihn
                 möglichst genau bei 10 Sekunden.
@@ -1542,17 +1629,24 @@ if (miniGameArea && minigameButtons.length > 0) {
             >
                 -
             </div>
+
         `);
 
 
         const timer =
-            document.getElementById("tenTimer");
+            document.getElementById(
+                "tenTimer"
+            );
 
         const button =
-            document.getElementById("tenButton");
+            document.getElementById(
+                "tenButton"
+            );
 
         const result =
-            document.getElementById("tenResult");
+            document.getElementById(
+                "tenResult"
+            );
 
 
         let running = false;
@@ -1572,6 +1666,7 @@ if (miniGameArea && minigameButtons.length > 0) {
                     button.textContent =
                         "STOPP";
 
+
                     tenInterval =
                         setInterval(
                             function () {
@@ -1581,6 +1676,7 @@ if (miniGameArea && minigameButtons.length > 0) {
                                         performance.now() -
                                         tenStart
                                     ) / 1000;
+
 
                                 timer.textContent =
                                     time.toFixed(2);
@@ -1597,27 +1693,40 @@ if (miniGameArea && minigameButtons.length > 0) {
 
                     running = false;
 
+
                     const time =
                         (
                             performance.now() -
                             tenStart
                         ) / 1000;
 
+
                     const difference =
                         Math.abs(
                             10 - time
                         );
 
+                    rewardMiniGameXP("ten");
+
+
                     timer.textContent =
                         time.toFixed(2);
+
+
                     result.textContent =
                         difference.toFixed(2) +
                         " Sekunden daneben";
 
-                    saveHighscore("ten", difference);
+
+                    saveHighscore(
+                        "ten",
+                        difference
+                    );
+
 
                     button.textContent =
                         "NOCHMAL";
+
                 }
 
             }
@@ -1632,6 +1741,11 @@ if (miniGameArea && minigameButtons.length > 0) {
 
     function startMemoryGame() {
 
+        startMiniGameXPSession("memory");
+
+        registerGamePlayed();
+
+        // ...
         setGameTitle("🧠 Memory");
 
 
@@ -1656,7 +1770,6 @@ if (miniGameArea && minigameButtons.length > 0) {
 
 
         showGame(`
-     
 
             <p id="memoryText">
                 Merke dir die Zahlenfolge!
@@ -1689,6 +1802,7 @@ if (miniGameArea && minigameButtons.length > 0) {
             >
                 ?
             </div>
+
         `);
 
 
@@ -1738,19 +1852,31 @@ if (miniGameArea && minigameButtons.length > 0) {
 
 
                 if (answer === correct) {
-                    unlockAchievement("memoryPro");
+
+                    unlockAchievement(
+                        "memoryPro"
+                    );
+                    rewardMiniGameXP("memory");
+
                     result.textContent =
                         "🎉 RICHTIG!";
 
-                    saveHighscore("memory", 1);
+
+                    saveHighscore(
+                        "memory",
+                        1
+                    );
+
 
                     showToast(
                         "🧠 Sehr gut!"
                     );
+
                 } else {
 
                     result.textContent =
                         "❌ FALSCH";
+
 
                     number.textContent =
                         sequence.join(" ");
@@ -1769,20 +1895,19 @@ if (miniGameArea && minigameButtons.length > 0) {
 
     function startTargetRush() {
 
+        registerGamePlayed();
+
+        unlockAchievement("firstGame");
+
         setGameTitle("🎯 Target Rush");
 
 
         targetScore = 0;
 
-        if (targetScore >= 20) {
-            unlockAchievement("targetMaster");
-        }
-
         targetTime = 15;
 
 
         showGame(`
-
 
             <p>
                 Triff so viele Ziele wie möglich!
@@ -1821,6 +1946,7 @@ if (miniGameArea && minigameButtons.length > 0) {
             >
                 START
             </button>
+
         `);
 
 
@@ -1857,18 +1983,26 @@ if (miniGameArea && minigameButtons.length > 0) {
         function moveTarget() {
 
             const maxX =
-                area.clientWidth -
-                targetButton.offsetWidth;
+                Math.max(
+                    0,
+                    area.clientWidth -
+                    targetButton.offsetWidth
+                );
+
 
             const maxY =
-                area.clientHeight -
-                targetButton.offsetHeight;
+                Math.max(
+                    0,
+                    area.clientHeight -
+                    targetButton.offsetHeight
+                );
 
 
             targetButton.style.left =
                 Math.random() *
                 maxX +
                 "px";
+
 
             targetButton.style.top =
                 Math.random() *
@@ -1889,13 +2023,24 @@ if (miniGameArea && minigameButtons.length > 0) {
                 score.textContent =
                     "0";
 
+                time.textContent =
+                    "15 Sekunden";
+
+
                 targetButton.style.display =
                     "block";
+
 
                 startButton.disabled =
                     true;
 
+
                 moveTarget();
+
+
+                clearInterval(
+                    targetInterval
+                );
 
 
                 targetInterval =
@@ -1903,6 +2048,7 @@ if (miniGameArea && minigameButtons.length > 0) {
                         function () {
 
                             targetTime--;
+
 
                             time.textContent =
                                 targetTime +
@@ -1917,18 +2063,35 @@ if (miniGameArea && minigameButtons.length > 0) {
                                     targetInterval
                                 );
 
+                                rewardMiniGameXP("target");
                                 targetButton.style.display =
                                     "none";
+
 
                                 startButton.disabled =
                                     false;
 
+
                                 startButton.textContent =
                                     "NOCHMAL";
+
+
                                 saveHighscore(
                                     "target",
                                     targetScore
                                 );
+
+
+                                if (
+                                    targetScore >= 20
+                                ) {
+
+                                    unlockAchievement(
+                                        "targetMaster"
+                                    );
+
+                                }
+
 
                                 showToast(
                                     "🎯 Score: " +
@@ -1951,13 +2114,17 @@ if (miniGameArea && minigameButtons.length > 0) {
 
                 if (
                     targetTime <= 0
-                ) return;
+                ) {
+                    return;
+                }
 
 
                 targetScore++;
 
+
                 score.textContent =
                     targetScore;
+
 
                 moveTarget();
 
@@ -1988,11 +2155,13 @@ if (miniGameArea && minigameButtons.length > 0) {
 
                     }
 
+
                     if (game === "reaction") {
 
                         startReactionGame();
 
                     }
+
 
                     if (game === "lucky") {
 
@@ -2000,17 +2169,20 @@ if (miniGameArea && minigameButtons.length > 0) {
 
                     }
 
+
                     if (game === "ten") {
 
                         startTenSecondGame();
 
                     }
 
+
                     if (game === "memory") {
 
                         startMemoryGame();
 
                     }
+
 
                     if (game === "target") {
 
@@ -2030,7 +2202,6 @@ if (miniGameArea && minigameButtons.length > 0) {
 /* =========================
    MINI GAME HIGHSCORES
 ========================= */
-
 
 const highscoreKeys = {
 
@@ -2055,16 +2226,25 @@ const highscoreKeys = {
 
 function getHighscore(game) {
 
+    const key =
+        highscoreKeys[game];
+
+
+    if (!key) {
+        return null;
+    }
+
+
     const value =
-        localStorage.getItem(
-            highscoreKeys[game]
-        );
+        localStorage.getItem(key);
+
 
     if (value === null) {
 
         return null;
 
     }
+
 
     return Number(value);
 
@@ -2090,8 +2270,6 @@ function saveHighscore(game, value) {
 
     } else {
 
-        /* Höher ist besser */
-
         if (
             game === "click" ||
             game === "memory" ||
@@ -2106,8 +2284,6 @@ function saveHighscore(game, value) {
 
         }
 
-
-        /* Niedriger ist besser */
 
         if (
             game === "reaction" ||
@@ -2133,15 +2309,20 @@ function saveHighscore(game, value) {
             value
         );
 
+
         updateHighscoreDisplay();
 
+
         checkNewHighscoreAchievement();
+
 
         showToast(
             "🏆 NEUER HIGHSCORE!"
         );
 
+
         return true;
+
     }
 
 
@@ -2151,11 +2332,10 @@ function saveHighscore(game, value) {
 
 
 /* =========================
-   HIGHSCORE ANZEIGEN
+   HIGHSCORES ANZEIGEN
 ========================= */
 
 function updateHighscoreDisplay() {
-
 
     /* CLICK */
 
@@ -2264,7 +2444,7 @@ function updateHighscoreDisplay() {
 
     /* TARGET */
 
-    const target =
+    const targetHighscore =
         getHighscore("target");
 
     const targetElement =
@@ -2276,8 +2456,8 @@ function updateHighscoreDisplay() {
     if (targetElement) {
 
         targetElement.textContent =
-            target !== null
-                ? target
+            targetHighscore !== null
+                ? targetHighscore
                 : "0";
 
     }
@@ -2340,12 +2520,7 @@ if (resetHighscores) {
 }
 
 
-/* =========================
-   START
-========================= */
-
 updateHighscoreDisplay();
-
 
 
 /* =========================
@@ -2355,39 +2530,86 @@ updateHighscoreDisplay();
 const achievements = {
 
     firstGame: {
+
         icon: "🎮",
+
         title: "Erster Schritt",
-        description: "Spiele dein erstes Mini-Game."
+
+        description:
+            "Spiele dein erstes Mini-Game."
+
     },
+
 
     firstHighscore: {
+
         icon: "🏆",
+
         title: "Highscore!",
-        description: "Erreiche deinen ersten Highscore."
+
+        description:
+            "Erreiche deinen ersten Highscore."
+
     },
+
+
+    newHighscore: {
+
+        icon: "🔥",
+
+        title: "Neuer Rekord",
+
+        description:
+            "Stelle einen neuen Highscore auf."
+
+    },
+
 
     fastReaction: {
+
         icon: "⚡",
+
         title: "Blitzreaktion",
-        description: "Schaffe eine Reaktionszeit unter 200 ms."
+
+        description:
+            "Schaffe eine Reaktionszeit unter 200 ms."
+
     },
+
 
     targetMaster: {
+
         icon: "🎯",
+
         title: "Zielmeister",
-        description: "Erreiche 20 Treffer bei Target Rush."
+
+        description:
+            "Erreiche 20 Treffer bei Target Rush."
+
     },
+
 
     memoryPro: {
+
         icon: "🧠",
+
         title: "Gedächtnisprofi",
-        description: "Schaffe das Memory-Spiel."
+
+        description:
+            "Schaffe das Memory-Spiel."
+
     },
 
+
     luckyWinner: {
+
         icon: "🎲",
+
         title: "Glückspilz",
-        description: "Errate die Lucky Number."
+
+        description:
+            "Errate die Lucky Number."
+
     }
 
 };
@@ -2402,7 +2624,9 @@ function getAchievements() {
     try {
 
         return JSON.parse(
-            localStorage.getItem("achievements")
+            localStorage.getItem(
+                "achievements"
+            )
         ) || [];
 
     } catch (error) {
@@ -2424,17 +2648,22 @@ let unlockedAchievements =
 
 function unlockAchievement(id) {
 
-    if (!achievements[id]) return;
+    if (!achievements[id]) {
+        return;
+    }
+
 
     if (
         unlockedAchievements.includes(id)
     ) {
+
         return;
+
     }
+
 
     unlockedAchievements.push(id);
 
-    addXP(50);
 
     localStorage.setItem(
         "achievements",
@@ -2443,12 +2672,51 @@ function unlockAchievement(id) {
         )
     );
 
+
+    addXP(50);
+
+
     updateAchievements();
+
 
     showToast(
         "🏆 Achievement freigeschaltet: " +
         achievements[id].title
     );
+
+}
+
+
+/* =========================
+   NEUER HIGHSCORE ACHIEVEMENT
+========================= */
+
+function checkNewHighscoreAchievement() {
+
+    if (
+        !unlockedAchievements.includes(
+            "firstHighscore"
+        )
+    ) {
+
+        unlockAchievement(
+            "firstHighscore"
+        );
+
+    }
+
+
+    if (
+        !unlockedAchievements.includes(
+            "newHighscore"
+        )
+    ) {
+
+        unlockAchievement(
+            "newHighscore"
+        );
+
+    }
 
 }
 
@@ -2464,19 +2732,30 @@ function updateAchievements() {
             "achievementProgressText"
         );
 
+
     const progressFill =
         document.getElementById(
             "achievementProgressFill"
         );
 
+
     const totalAchievements =
-        Object.keys(achievements).length;
+        Object.keys(
+            achievements
+        ).length;
+
 
     const unlockedCount =
         unlockedAchievements.length;
 
+
     const progress =
-        (unlockedCount / totalAchievements) * 100;
+        totalAchievements > 0
+            ? (
+                unlockedCount /
+                totalAchievements
+            ) * 100
+            : 0;
 
 
     if (progressText) {
@@ -2496,14 +2775,20 @@ function updateAchievements() {
 
     }
 
+
     const grid =
         document.getElementById(
             "achievementsGrid"
         );
 
-    if (!grid) return;
+
+    if (!grid) {
+        return;
+    }
+
 
     grid.innerHTML = "";
+
 
     Object.entries(achievements)
         .forEach(
@@ -2513,8 +2798,12 @@ function updateAchievements() {
                     unlockedAchievements
                         .includes(id);
 
+
                 const card =
-                    document.createElement("div");
+                    document.createElement(
+                        "div"
+                    );
+
 
                 card.className =
                     "achievement-card" +
@@ -2523,6 +2812,7 @@ function updateAchievements() {
                             ? " unlocked"
                             : " locked"
                     );
+
 
                 card.innerHTML = `
 
@@ -2547,6 +2837,7 @@ function updateAchievements() {
 
                 `;
 
+
                 grid.appendChild(card);
 
             }
@@ -2556,21 +2847,17 @@ function updateAchievements() {
 
 
 /* =========================
-   START
-========================= */
-
-updateAchievements();
-
-
-/* =========================
    XP & LEVEL SYSTEM
 ========================= */
 
 const XP_PER_LEVEL = 100;
 
+
 let playerXP =
     Number(
-        localStorage.getItem("playerXP")
+        localStorage.getItem(
+            "playerXP"
+        )
     ) || 0;
 
 
@@ -2581,26 +2868,39 @@ let playerXP =
 function updateXPDisplay() {
 
     const levelElement =
-        document.getElementById("xpLevel");
+        document.getElementById(
+            "xpLevel"
+        );
+
 
     const amountElement =
-        document.getElementById("xpAmount");
+        document.getElementById(
+            "xpAmount"
+        );
+
 
     const nextElement =
-        document.getElementById("xpNext");
+        document.getElementById(
+            "xpNext"
+        );
+
 
     const barElement =
-        document.getElementById("xpBarFill");
+        document.getElementById(
+            "xpBarFill"
+        );
 
 
     const level =
         Math.floor(
-            playerXP / XP_PER_LEVEL
+            playerXP /
+            XP_PER_LEVEL
         ) + 1;
 
 
     const currentXP =
-        playerXP % XP_PER_LEVEL;
+        playerXP %
+        XP_PER_LEVEL;
 
 
     const percentage =
@@ -2610,7 +2910,8 @@ function updateXPDisplay() {
     if (levelElement) {
 
         levelElement.textContent =
-            "Level " + level;
+            "Level " +
+            level;
 
     }
 
@@ -2629,7 +2930,9 @@ function updateXPDisplay() {
     if (nextElement) {
 
         const remaining =
-            XP_PER_LEVEL - currentXP;
+            XP_PER_LEVEL -
+            currentXP;
+
 
         nextElement.textContent =
             "Noch " +
@@ -2642,7 +2945,8 @@ function updateXPDisplay() {
     if (barElement) {
 
         barElement.style.width =
-            percentage + "%";
+            percentage +
+            "%";
 
     }
 
@@ -2654,42 +2958,21 @@ function updateXPDisplay() {
 ========================= */
 
 function addXP(amount) {
-    /* =========================
-   ACHIEVEMENT: NEUER HIGHSCORE
-========================= */
 
-    function checkNewHighscoreAchievement() {
-
-        const unlocked =
-            localStorage.getItem("achievement-new-highscore");
-
-        if (unlocked === "true") {
-            return;
-        }
-
-        localStorage.setItem(
-            "achievement-new-highscore",
-            "true"
-        );
-
-        addXP(50);
-
-        showToast(
-            "🏆 Achievement freigeschaltet: Neuer Highscore!"
-        );
-
-    }
     if (
         !amount ||
         amount <= 0
     ) {
+
         return;
+
     }
 
 
     const oldLevel =
         Math.floor(
-            playerXP / XP_PER_LEVEL
+            playerXP /
+            XP_PER_LEVEL
         ) + 1;
 
 
@@ -2704,12 +2987,12 @@ function addXP(amount) {
 
     const newLevel =
         Math.floor(
-            playerXP / XP_PER_LEVEL
+            playerXP /
+            XP_PER_LEVEL
         ) + 1;
 
 
     updateXPDisplay();
-
 
     if (newLevel > oldLevel) {
 
@@ -2719,7 +3002,11 @@ function addXP(amount) {
             "!"
         );
 
-    } else {
+        checkLevelRewards();
+
+    }
+
+    else {
 
         showToast(
             "⚡ +" +
@@ -2736,4 +3023,539 @@ function addXP(amount) {
    START
 ========================= */
 
+updateAchievements();
+
 updateXPDisplay();
+
+/* =========================
+   GAMING PROFILE SYSTEM
+========================= */
+
+const profileName =
+    document.getElementById("profileName");
+
+const profileLevel =
+    document.getElementById("profileLevel");
+
+const profileXP =
+    document.getElementById("profileXP");
+
+const profileXPNext =
+    document.getElementById("profileXPNext");
+
+const profileXPFill =
+    document.getElementById("profileXPFill");
+
+const profileAchievements =
+    document.getElementById("profileAchievements");
+
+const profileGames =
+    document.getElementById("profileGames");
+
+const profileHighscores =
+    document.getElementById("profileHighscores");
+
+const profileTotalXP =
+    document.getElementById("profileTotalXP");
+
+const changeProfileName =
+    document.getElementById("changeProfileName");
+
+
+/* =========================
+   PROFILNAME
+========================= */
+
+let savedProfileName =
+    localStorage.getItem("profileName") ||
+    "Gamer";
+
+
+function updateProfileName() {
+
+    if (!profileName) {
+        return;
+    }
+
+    profileName.textContent =
+        savedProfileName;
+
+}
+
+
+if (changeProfileName) {
+
+    changeProfileName.addEventListener(
+        "click",
+        function () {
+
+            const newName =
+                prompt(
+                    "Wie möchtest du heißen?",
+                    savedProfileName
+                );
+
+
+            if (
+                newName === null
+            ) {
+                return;
+            }
+
+
+            const cleanName =
+                newName.trim();
+
+
+            if (!cleanName) {
+
+                showToast(
+                    "⚠️ Bitte einen Namen eingeben!"
+                );
+
+                return;
+
+            }
+
+
+            if (cleanName.length > 20) {
+
+                showToast(
+                    "⚠️ Der Name darf maximal 20 Zeichen haben!"
+                );
+
+                return;
+
+            }
+
+
+            savedProfileName =
+                cleanName;
+
+
+            localStorage.setItem(
+                "profileName",
+                savedProfileName
+            );
+
+
+            updateProfileName();
+
+
+            showToast(
+                "✏️ Profilname geändert!"
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================
+   GESPIELTE GAMES
+========================= */
+
+let gamesPlayed =
+    Number(
+        localStorage.getItem(
+            "gamesPlayed"
+        )
+    ) || 0;
+
+
+function registerGamePlayed() {
+
+    gamesPlayed++;
+
+
+    localStorage.setItem(
+        "gamesPlayed",
+        gamesPlayed
+    );
+
+
+    updateProfileStats();
+
+}
+
+
+/* =========================
+   HIGHSCORES ZÄHLEN
+========================= */
+
+function getHighscoreCount() {
+
+    let count = 0;
+
+
+    Object.keys(
+        highscoreKeys
+    ).forEach(
+        function (game) {
+
+            if (
+                getHighscore(game) !== null
+            ) {
+
+                count++;
+
+            }
+
+        }
+    );
+
+
+    return count;
+
+}
+
+
+/* =========================
+   PROFIL LEVEL + XP
+========================= */
+
+function updateProfileXP() {
+
+    if (
+        typeof playerXP ===
+        "undefined"
+    ) {
+        return;
+    }
+
+
+    const level =
+        Math.floor(
+            playerXP /
+            XP_PER_LEVEL
+        ) + 1;
+
+
+    const currentXP =
+        playerXP %
+        XP_PER_LEVEL;
+
+
+    const remainingXP =
+        XP_PER_LEVEL -
+        currentXP;
+
+
+    if (profileLevel) {
+
+        profileLevel.textContent =
+            "Level " +
+            level;
+
+    }
+
+
+    if (profileXP) {
+
+        profileXP.textContent =
+            currentXP +
+            " / " +
+            XP_PER_LEVEL +
+            " XP";
+
+    }
+
+
+    if (profileXPNext) {
+
+        profileXPNext.textContent =
+            "Noch " +
+            remainingXP +
+            " XP";
+
+    }
+
+
+    if (profileXPFill) {
+
+        profileXPFill.style.width =
+            currentXP +
+            "%";
+
+    }
+
+
+    if (profileTotalXP) {
+
+        profileTotalXP.textContent =
+            playerXP;
+
+    }
+
+}
+
+
+/* =========================
+   PROFIL STATISTIKEN
+========================= */
+
+function updateProfileStats() {
+
+    if (profileAchievements) {
+
+        profileAchievements.textContent =
+            unlockedAchievements.length;
+
+    }
+
+
+    if (profileGames) {
+
+        profileGames.textContent =
+            gamesPlayed;
+
+    }
+
+
+    if (profileHighscores) {
+
+        profileHighscores.textContent =
+            getHighscoreCount();
+
+    }
+
+
+    updateProfileXP();
+
+}
+
+
+/* =========================
+   PROFILE AKTUALISIEREN
+========================= */
+
+function updateProfile() {
+
+    updateProfileName();
+
+    updateProfileStats();
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+updateProfile();
+
+
+/* =========================
+   MINI GAME XP SYSTEM
+========================= */
+
+const MINI_GAME_XP = 5;
+
+
+/* =========================
+   XP FÜR ABGESCHLOSSENES GAME
+========================= */
+
+function rewardMiniGameXP(gameId, completed = true) {
+
+    if (!completed) {
+        return;
+    }
+
+
+    const sessionKey =
+        "miniGameXP-" + gameId;
+
+
+    /*
+       Verhindert, dass dieselbe Runde
+       mehrfach XP gibt.
+    */
+
+    if (
+        sessionStorage.getItem(sessionKey) === "true"
+    ) {
+        return;
+    }
+
+
+    sessionStorage.setItem(
+        sessionKey,
+        "true"
+    );
+
+
+    addXP(MINI_GAME_XP);
+
+
+    showToast(
+        "⚡ +5 XP für " +
+        "abgeschlossenes Mini-Game!"
+    );
+
+}
+
+
+/* =========================
+   NEUE RUNDE ERLAUBEN
+========================= */
+
+function startMiniGameXPSession(gameId) {
+
+    const sessionKey =
+        "miniGameXP-" + gameId;
+
+
+    sessionStorage.removeItem(
+        sessionKey
+    );
+
+}
+
+
+/* =========================
+   LEVEL REWARDS
+========================= */
+
+const levelRewards = {
+
+    5: {
+        title: "🥉 Anfänger"
+    },
+
+    10: {
+        title: "🥈 Gamer"
+    },
+
+    20: {
+        title: "🥇 Pro Gamer"
+    },
+
+    30: {
+        title: "💎 Elite Gamer"
+    },
+
+    50: {
+        title: "👑 Gaming Legend"
+    },
+
+    100: {
+        title: "🌌 Nexus Legend"
+    }
+
+};
+
+
+/* =========================
+   LEVEL-BELohnungen LADEN
+========================= */
+
+let unlockedLevelRewards = [];
+
+try {
+
+    unlockedLevelRewards =
+        JSON.parse(
+            localStorage.getItem(
+                "unlockedLevelRewards"
+            )
+        ) || [];
+
+} catch (error) {
+
+    unlockedLevelRewards = [];
+
+}
+
+
+/* =========================
+   LEVEL-BELOHNUNG PRÜFEN
+========================= */
+
+function checkLevelRewards() {
+
+    if (
+        typeof playerXP ===
+        "undefined"
+    ) {
+        return;
+    }
+
+
+    const currentLevel =
+        Math.floor(
+            playerXP /
+            XP_PER_LEVEL
+        ) + 1;
+
+
+    Object.keys(levelRewards)
+        .forEach(
+            function (level) {
+
+                const requiredLevel =
+                    Number(level);
+
+
+                if (
+                    currentLevel >=
+                    requiredLevel &&
+                    !unlockedLevelRewards.includes(
+                        requiredLevel
+                    )
+                ) {
+
+                    unlockLevelReward(
+                        requiredLevel
+                    );
+
+                }
+
+            }
+        );
+
+}
+
+
+/* =========================
+   LEVEL-BELOHNUNG FREISCHALTEN
+========================= */
+
+function unlockLevelReward(level) {
+
+    const reward =
+        levelRewards[level];
+
+
+    if (!reward) {
+        return;
+    }
+
+
+    unlockedLevelRewards.push(
+        level
+    );
+
+
+    localStorage.setItem(
+        "unlockedLevelRewards",
+        JSON.stringify(
+            unlockedLevelRewards
+        )
+    );
+
+
+    showToast(
+        "🎉 Neue Level-Belohnung: " +
+        reward.title
+    );
+
+}
+
+
+/* =========================
+   LEVEL-REWARDS START
+========================= */
+
+checkLevelRewards();
