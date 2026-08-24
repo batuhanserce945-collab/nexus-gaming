@@ -144,20 +144,39 @@
                     <input type="text" id="gameSearch" placeholder="Game suchen...">
                 </div>
 
+                <div class="category-dropdown">
 
-                <div class="game-categories">
-
-                    <button class="category-button active" data-category="all">
-                        Alle
+                    <button id="categoryToggle" class="category-toggle" type="button">
+                        📂 Kategorien ▾
                     </button>
 
-                    <button class="category-button" data-category="sandbox">
-                        Sandbox
-                    </button>
+                    <div id="categoryMenu" class="category-menu">
 
-                    <button class="category-button" data-category="platformer">
-                        Platformer
-                    </button>
+                        <button class="category-button active" data-category="all">
+                            Alle
+                        </button>
+
+                        <button class="category-button" data-category="sandbox">
+                            Sandbox
+                        </button>
+
+                        <button class="category-button" data-category="platformer">
+                            Platformer
+                        </button>
+
+                        <button class="category-button" data-category="action">
+                            Action
+                        </button>
+
+                        <button class="category-button" data-category="sports">
+                            Sports
+                        </button>
+
+                        <button class="category-button" data-category="fighting">
+                            Fighting
+                        </button>
+
+                    </div>
 
                 </div>
 
@@ -184,107 +203,107 @@
 
             </div>
 
-            <div class="cards">
+            <div class="cards" id="gameGrid"></div>
 
 
-                <!-- MINECRAFT -->
+            <!-- MINECRAFT -->
 
-                <a href="games/minecraft.html" class="game-card reveal" data-name="Minecraft" data-category="sandbox">
-                    <button class="favorite-button" data-game="Minecraft" title="Zu Favoriten hinzufügen">
-                        ☆
-                    </button>
-
-
-
-                    <div class="card-icon minecraft-icon">
-                        <img src="images/minecraft.jpg" alt="Minecraft" class="game-image">
-                    </div>
-
-                    <div class="card-content">
-
-                        <span class="card-tag">
-                            BUILD • SURVIVE • EXPLORE
-                        </span>
-
-                        <h3>Minecraft</h3>
-
-                        <p>
-                            Entdecke die Welt von Minecraft,
-                            Builds, Survival und mehr.
-                        </p>
-
-                        <span class="card-button">
-                            SEITE ÖFFNEN →
-                        </span>
-
-                    </div>
-
-                </a>
+            <a href="games/minecraft.html" class="game-card reveal" data-name="Minecraft" data-category="sandbox">
+                <button class="favorite-button" data-game="Minecraft" title="Zu Favoriten hinzufügen">
+                    ☆
+                </button>
 
 
-                <!-- ROBLOX -->
 
-                <a href="games/roblox.html" class="game-card reveal" data-name="Roblox" data-category="sandbox"> <button
-                        class="favorite-button" data-game="Roblox" title="Zu Favoriten hinzufügen">
-                        ☆
-                    </button>
-                    <div class="card-icon roblox-icon">
-                        <img src="images/roblox.jpg" alt="Roblox" class="game-image">
-                    </div>
+                <div class="card-icon minecraft-icon">
+                    <img src="images/minecraft.jpg" alt="Minecraft" class="game-image">
+                </div>
 
-                    <div class="card-content">
+                <div class="card-content">
 
-                        <span class="card-tag">
-                            CREATE • PLAY • DISCOVER
-                        </span>
+                    <span class="card-tag">
+                        BUILD • SURVIVE • EXPLORE
+                    </span>
 
-                        <h3>Roblox</h3>
+                    <h3>Minecraft</h3>
 
-                        <p>
-                            Entdecke Roblox-Spiele,
-                            Roblox Studio und mehr.
-                        </p>
+                    <p>
+                        Entdecke die Welt von Minecraft,
+                        Builds, Survival und mehr.
+                    </p>
 
-                        <span class="card-button">
-                            SEITE ÖFFNEN →
-                        </span>
+                    <span class="card-button">
+                        SEITE ÖFFNEN →
+                    </span>
 
-                    </div>
+                </div>
 
-                </a>
+            </a>
 
 
-                <!-- GEOMETRY DASH -->
+            <!-- ROBLOX -->
 
-                <a href="games/geometry-dash.html" class="game-card reveal" data-name="Geometry Dash"
-                    data-category="platformer"> <button class="favorite-button" data-game="Geometry Dash"
-                        title="Zu Favoriten hinzufügen">
-                        ☆
-                    </button>
-                    <div class="card-icon geometry-icon">
-                        <img src="images/geometry-dash.jpg" alt="Geometry Dash" class="game-image">
-                    </div>
+            <a href="games/roblox.html" class="game-card reveal" data-name="Roblox" data-category="sandbox"> <button
+                    class="favorite-button" data-game="Roblox" title="Zu Favoriten hinzufügen">
+                    ☆
+                </button>
+                <div class="card-icon roblox-icon">
+                    <img src="images/roblox.jpg" alt="Roblox" class="game-image">
+                </div>
 
-                    <div class="card-content">
+                <div class="card-content">
 
-                        <span class="card-tag">
-                            JUMP • FLY • COMPLETE
-                        </span>
+                    <span class="card-tag">
+                        CREATE • PLAY • DISCOVER
+                    </span>
 
-                        <h3>Geometry Dash</h3>
+                    <h3>Roblox</h3>
 
-                        <p>
-                            Levels, Demons, Musik und
-                            Geometry-Dash-Content.
-                        </p>
+                    <p>
+                        Entdecke Roblox-Spiele,
+                        Roblox Studio und mehr.
+                    </p>
 
-                        <span class="card-button">
-                            SEITE ÖFFNEN →
-                        </span>
+                    <span class="card-button">
+                        SEITE ÖFFNEN →
+                    </span>
 
-                    </div>
+                </div>
 
-                </a>
+            </a>
+
+
+            <!-- GEOMETRY DASH -->
+
+            <a href="games/geometry-dash.html" class="game-card reveal" data-name="Geometry Dash"
+                data-category="platformer"> <button class="favorite-button" data-game="Geometry Dash"
+                    title="Zu Favoriten hinzufügen">
+                    ☆
+                </button>
+                <div class="card-icon geometry-icon">
+                    <img src="images/geometry-dash.jpg" alt="Geometry Dash" class="game-image">
+                </div>
+
+                <div class="card-content">
+
+                    <span class="card-tag">
+                        JUMP • FLY • COMPLETE
+                    </span>
+
+                    <h3>Geometry Dash</h3>
+
+                    <p>
+                        Levels, Demons, Musik und
+                        Geometry-Dash-Content.
+                    </p>
+
+                    <span class="card-button">
+                        SEITE ÖFFNEN →
+                    </span>
+
+                </div>
+
+            </a>
 
             </div>
 
@@ -880,6 +899,146 @@
         </section>
         <!-- STATS -->
 
+        <section class="profile-section reveal">
+
+    <div class="profile-card">
+
+        <!-- PROFIL KOPF -->
+
+        <div class="profile-header">
+
+            <div class="profile-avatar">
+                🎮
+            </div>
+
+            <div class="profile-info">
+
+                <h2 id="profileName">
+                    Gamer
+                </h2>
+
+                <p id="profileLevel">
+                    Level 1
+                </p>
+
+            </div>
+
+            <button
+                id="changeProfileName"
+                class="profile-edit-button"
+                type="button"
+                title="Profilname ändern"
+            >
+                ✏️
+            </button>
+
+        </div>
+
+
+        <!-- XP -->
+
+        <div class="profile-xp">
+
+            <div class="profile-xp-top">
+
+                <span id="profileXP">
+                    0 / 100 XP
+                </span>
+
+                <span id="profileXPNext">
+                    Noch 100 XP
+                </span>
+
+            </div>
+
+            <div class="profile-xp-bar">
+
+                <div
+                    id="profileXPFill"
+                    class="profile-xp-fill"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- STATISTIKEN -->
+
+        <div class="profile-stats">
+
+            <div class="profile-stat">
+
+                <span class="profile-stat-icon">
+                    🏆
+                </span>
+
+                <strong id="profileAchievements">
+                    0
+                </strong>
+
+                <span>
+                    Achievements
+                </span>
+
+            </div>
+
+
+            <div class="profile-stat">
+
+                <span class="profile-stat-icon">
+                    🎮
+                </span>
+
+                <strong id="profileGames">
+                    0
+                </strong>
+
+                <span>
+                    Games gespielt
+                </span>
+
+            </div>
+
+
+            <div class="profile-stat">
+
+                <span class="profile-stat-icon">
+                    ⭐
+                </span>
+
+                <strong id="profileHighscores">
+                    0
+                </strong>
+
+                <span>
+                    Highscores
+                </span>
+
+            </div>
+
+
+            <div class="profile-stat">
+
+                <span class="profile-stat-icon">
+                    ⚡
+                </span>
+
+                <strong id="profileTotalXP">
+                    0
+                </strong>
+
+                <span>
+                    Gesamt-XP
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
         <section id="stats" class="stats-section">
 
             <div class="section-header">
