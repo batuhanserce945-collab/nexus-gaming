@@ -3864,3 +3864,590 @@ body.light-mode .xp-bar {
     }
 
 }
+
+/* =========================
+   CATEGORY DROPDOWN
+========================= */
+
+.category-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.category-toggle {
+    padding: 12px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    background: var(--card-bg);
+    color: inherit;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.category-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 180px;
+    padding: 8px;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+}
+
+.category-menu.active {
+    display: flex;
+}
+
+    /* =========================
+   CATEGORY DROPDOWN
+========================= */
+
+.category-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.category-toggle {
+    padding: 12px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    background: var(--card-bg);
+    color: inherit;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.category-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 180px;
+    padding: 8px;
+
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+
+    background: #16161f;
+    color: #ffffff;
+
+    border: 1px solid #333344;
+    border-radius: 12px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+    z-index: 1000;
+}
+
+.category-menu.active {
+    display: flex;
+}
+
+.category-menu .category-button {
+    width: 100%;
+    text-align: left;
+
+    border: none;
+    background: #222230;
+    color: #ffffff;
+
+    padding: 10px 12px;
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+.category-menu .category-button:hover {
+    background: #333344;
+}
+
+.category-menu .category-button.active {
+    background: #44445a;
+}
+
+.category-menu .category-button {
+    width: 100%;
+    text-align: left;
+
+    border: none;
+    background: #222230;
+    color: #ffffff;
+
+    padding: 10px 12px;
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+.category-menu .category-button:hover {
+    background: #333344;
+}
+
+.category-menu .category-button.active {
+    background: #44445a;
+}
+
+.category-menu .category-button:hover,
+.category-menu .category-button.active {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+
+/* =========================
+   GAMING PROFILE
+========================= */
+
+.profile-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+
+.profile-card {
+    width: min(900px, 100%);
+    padding: 30px;
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20, 20, 35, 0.95),
+            rgba(10, 10, 20, 0.95)
+        );
+
+    border: 1px solid rgba(0, 255, 255, 0.35);
+
+    box-shadow:
+        0 0 25px rgba(0, 255, 255, 0.12),
+        inset 0 0 25px rgba(0, 255, 255, 0.03);
+
+    backdrop-filter: blur(12px);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+.profile-card:hover {
+
+    transform: translateY(-4px);
+
+    border-color: rgba(0, 255, 255, 0.7);
+
+    box-shadow:
+        0 0 35px rgba(0, 255, 255, 0.2),
+        inset 0 0 30px rgba(0, 255, 255, 0.05);
+
+}
+
+
+/* =========================
+   PROFILE HEADER
+========================= */
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    font-size: 38px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 255, 255, 0.15),
+            rgba(140, 0, 255, 0.2)
+        );
+
+    border: 2px solid rgba(0, 255, 255, 0.5);
+
+    box-shadow:
+        0 0 20px rgba(0, 255, 255, 0.25);
+}
+
+
+.profile-info {
+    flex: 1;
+}
+
+
+.profile-info h2 {
+    margin: 0;
+
+    font-size: 28px;
+
+    font-weight: 800;
+
+    color: #ffffff;
+}
+
+
+.profile-info p {
+    margin: 5px 0 0;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    color: #00ffff;
+
+    text-shadow:
+        0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+
+/* =========================
+   EDIT BUTTON
+========================= */
+
+.profile-edit-button {
+    width: 44px;
+    height: 44px;
+
+    border: 1px solid rgba(0, 255, 255, 0.35);
+
+    border-radius: 12px;
+
+    background:
+        rgba(0, 255, 255, 0.08);
+
+    color: white;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.profile-edit-button:hover {
+
+    transform: scale(1.08);
+
+    background:
+        rgba(0, 255, 255, 0.18);
+
+    border-color:
+        rgba(0, 255, 255, 0.7);
+
+}
+
+
+/* =========================
+   XP
+========================= */
+
+.profile-xp {
+    margin-top: 30px;
+}
+
+
+.profile-xp-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+
+    margin-bottom: 10px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: #d7ffff;
+}
+
+
+.profile-xp-bar {
+    width: 100%;
+    height: 14px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    border:
+        1px solid rgba(0, 255, 255, 0.2);
+}
+
+
+.profile-xp-fill {
+    width: 0%;
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00ffff,
+            #7a5cff,
+            #ff00ff
+        );
+
+    box-shadow:
+        0 0 15px rgba(0, 255, 255, 0.5);
+
+    transition:
+        width 0.5s ease;
+}
+
+
+/* =========================
+   PROFILE STATS
+========================= */
+
+.profile-stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-top: 30px;
+}
+
+
+.profile-stat {
+    min-height: 125px;
+
+    padding: 20px 10px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    border:
+        1px solid rgba(0, 255, 255, 0.15);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+
+.profile-stat:hover {
+
+    transform: translateY(-5px);
+
+    background:
+        rgba(0, 255, 255, 0.06);
+
+    border-color:
+        rgba(0, 255, 255, 0.5);
+
+}
+
+
+.profile-stat-icon {
+    font-size: 25px;
+
+    margin-bottom: 8px;
+}
+
+
+.profile-stat strong {
+    font-size: 24px;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+
+.profile-stat span:last-child {
+    margin-top: 4px;
+
+    font-size: 12px;
+
+    color: rgba(255, 255, 255, 0.65);
+}
+
+
+/* =========================
+   LIGHT MODE
+========================= */
+
+body.light-mode .profile-card {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.95),
+            rgba(240, 250, 255, 0.95)
+        );
+
+    border-color:
+        rgba(0, 150, 255, 0.35);
+
+    box-shadow:
+        0 0 25px rgba(0, 150, 255, 0.12),
+        inset 0 0 25px rgba(0, 150, 255, 0.03);
+
+}
+
+
+body.light-mode .profile-info h2 {
+
+    color: #111827;
+
+}
+
+
+body.light-mode .profile-info p {
+
+    color: #008cff;
+
+}
+
+
+body.light-mode .profile-xp-top {
+
+    color: #26384a;
+
+}
+
+
+body.light-mode .profile-stat {
+
+    background:
+        rgba(0, 150, 255, 0.035);
+
+    border-color:
+        rgba(0, 150, 255, 0.15);
+
+}
+
+
+body.light-mode .profile-stat strong {
+
+    color: #111827;
+
+}
+
+
+body.light-mode .profile-stat span:last-child {
+
+    color:
+        rgba(20, 30, 40, 0.65);
+
+}
+
+
+body.light-mode .profile-edit-button {
+
+    color: #111827;
+
+    background:
+        rgba(0, 150, 255, 0.06);
+
+    border-color:
+        rgba(0, 150, 255, 0.25);
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .profile-card {
+        padding: 22px;
+    }
+
+
+    .profile-header {
+        gap: 14px;
+    }
+
+
+    .profile-avatar {
+        width: 65px;
+        height: 65px;
+
+        font-size: 30px;
+    }
+
+
+    .profile-info h2 {
+        font-size: 22px;
+    }
+
+
+    .profile-stats {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 420px) {
+
+    .profile-card {
+        padding: 18px;
+    }
+
+
+    .profile-stats {
+        gap: 10px;
+    }
+
+
+    .profile-stat {
+        min-height: 110px;
+        padding: 15px 8px;
+    }
+
+
+    .profile-stat strong {
+        font-size: 21px;
+    }
+
+}
